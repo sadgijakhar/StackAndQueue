@@ -1,9 +1,9 @@
 import java.util.Scanner;
-public class StackImplementationWithLinkedList {
+public class QueueImplemenationWithLinkedList {
     Scanner sc = new Scanner(System.in);
-    class Node{
-        Node next ;
+;    class Node{
         int data;
+        Node next;
         Node(int data){
             this.data = data;
             this.next = null;
@@ -11,16 +11,17 @@ public class StackImplementationWithLinkedList {
     }
     static Node head;
     void edit(){
-        System.out.println("Press 1 to push into stack");
-        System.out.println("Press 2 to pop from stack");
-        System.out.println("Press 3 to check stack empty or not");
-        System.out.println("Press 4 to print the stack");
+        System.out.println();
+        System.out.println("Press 1 to push into Queue");
+        System.out.println("Press 2 to pop from Queue");
+        System.out.println("Press 3 to check Queue empty or not");
+        System.out.println("Press 4 to print the Queue");
         System.out.println("Press 5 to print peek Element");
         System.out.println("Press 6 to exit ");
         System.out.print("Enter Your Choice: ");
         int option = sc.nextInt();
         if(option == 1){
-            System.out.print("Enter a element to push in Stack: ");
+            System.out.print("Enter a element to push in Queue: ");
             int x = sc.nextInt();
             push(x);
         }
@@ -45,49 +46,44 @@ public class StackImplementationWithLinkedList {
             edit();
         }
     }
-    
-    void push(int x){
-        Node node = new Node(x);
-        node.next = head;
-        head = node;
-        System.out.println(x + " Pushed into Stack ");
+
+    void push(int num){
+        Node node = new Node(num);
+        node.next = null;
+        if(head == null){
+            head = node;
+            System.out.println(num + " Pushed Into Queue");
+        }
+        else{
+            Node temp = head;
+            while( temp.next != null ){
+                temp = temp.next;
+            }
+            temp.next = node;
+            System.out.println(num + " Pushed Into Queue");
+        }
         System.out.println();
         edit();
     }
+
     void pop(){
         Node temp = head;
-        if(temp != null){
-            System.out.println(temp.data + " Popped from Satck ");
-            head = temp.next;
-            System.out.println();
-            edit();
-        }
-        else{
-            System.out.println("Stack Is Empty ");
-            System.out.println();
-            edit();
-        }
-        
-    }
-    void isEmpty(){
-        if(head == null){
-            System.out.println(true);
-        }
-        else{
-            System.out.println(false);
-        }
+        System.out.println(head.data + " Element Popped from Queue");
+        temp.next = head.next ;
+        head = temp.next;
         System.out.println();
         edit();
     }
+
     void print(){
         Node temp = head;
         while(temp != null){
             System.out.println(temp.data);
             temp = temp.next;
         }
-        System.out.println();
         edit();
     }
+
     void peek(){
         if(head == null){
             System.out.println("UnderFlow");
@@ -98,11 +94,24 @@ public class StackImplementationWithLinkedList {
         System.out.println();
         edit();
     }
+
+    void isEmpty(){
+        if(head ==  null){
+            System.out.println(true);
+        }
+        else{
+            System.out.println(false);
+        }
+        System.out.println();
+        edit();
+    }
+
     void exit(){
 
     }
+
     public static void main(String[] args) {
-        StackImplementationWithLinkedList s = new StackImplementationWithLinkedList();
-        s.edit();
+        QueueImplemenationWithLinkedList p = new QueueImplemenationWithLinkedList();
+        p.edit();
     }
 }
