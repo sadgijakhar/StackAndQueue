@@ -3,6 +3,7 @@ import java.util.Stack;
 public class FindMinimumElementFromStack {
     static Stack<Integer> s = new Stack<>();
     void Minimum(){
+        
         Stack<Integer> s1 = new Stack<>();
         while(s.size()>1){
             int a = s.pop();
