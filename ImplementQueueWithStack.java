@@ -32,6 +32,7 @@ public class ImplementQueueWithStack {
             
             edit();
         }
+        
     }
     void push(int x){
         s.push(x);
