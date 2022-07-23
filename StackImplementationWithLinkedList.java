@@ -15,7 +15,8 @@ public class StackImplementationWithLinkedList {
         System.out.println("Press 2 to pop from stack");
         System.out.println("Press 3 to check stack empty or not");
         System.out.println("Press 4 to print the stack");
-        System.out.println("Press 5 to exit ");
+        System.out.println("Press 5 to print peek Element");
+        System.out.println("Press 6 to exit ");
         System.out.print("Enter Your Choice: ");
         int option = sc.nextInt();
         if(option == 1){
@@ -33,6 +34,9 @@ public class StackImplementationWithLinkedList {
             print();
         }
         else if (option == 5){
+            peek();
+        }
+        else if (option == 6){
             exit();
         }
         else{
@@ -80,6 +84,16 @@ public class StackImplementationWithLinkedList {
         while(temp != null){
             System.out.println(temp.data);
             temp = temp.next;
+        }
+        System.out.println();
+        edit();
+    }
+    void peek(){
+        if(head == null){
+            System.out.println("UnderFlow");
+        }
+        else{
+            System.out.println("PEEK element is "+ head.data);   
         }
         System.out.println();
         edit();
