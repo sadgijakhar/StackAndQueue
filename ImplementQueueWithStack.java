@@ -9,7 +9,8 @@ public class ImplementQueueWithStack {
         System.out.println("Press 1 to push into Queue");
         System.out.println("Press 2 to pop from Queue");
         System.out.println("Press 3 Peek Value of Queue");
-        System.out.println("Press 4 to exit ");
+        System.out.println("Press 4 to print Queue");
+        System.out.println("Press 5 to exit ");
         System.out.print("Enter Your Choice: ");
         int option = sc.nextInt();
         if(option == 1){
@@ -24,6 +25,9 @@ public class ImplementQueueWithStack {
             peek();
         }
         else if (option == 4){
+            print();
+        }
+        else if (option == 5){
             exit();
         }
         else{
@@ -32,7 +36,7 @@ public class ImplementQueueWithStack {
             
             edit();
         }
-        
+
     }
     void push(int x){
         s.push(x);
@@ -41,12 +45,17 @@ public class ImplementQueueWithStack {
         edit();
     }
     void pop(){
-        while(!s.isEmpty()){
-            s1.push(s.pop());
+        if(!s.isEmpty()){
+            while(!s.isEmpty()){
+                s1.push(s.pop());
+            }
+            System.out.println(s1.pop() + " Element popped from Queue");
+            while(!s1.isEmpty()){
+                s.push(s1.pop());
+            }
         }
-        System.out.println(s1.pop() + " Element popped from Queue");
-        while(!s1.isEmpty()){
-            s.push(s1.pop());
+        else{
+            System.out.println("UnderFlow");
         }
         System.out.println();
         edit();
@@ -58,6 +67,22 @@ public class ImplementQueueWithStack {
         System.out.println(s1.peek() + " Peek Element of the Queue");
         while(!s1.isEmpty()){
             s.push(s1.pop());
+        }
+        System.out.println();
+        edit();
+    }
+    void print(){
+        if(!s.isEmpty()){
+            while(!s.isEmpty()){
+                s1.push(s.pop());
+            }
+            System.out.println(s);
+            while(!s1.isEmpty()){
+                s.push(s1.pop());
+            }
+        }
+        else{
+            System.out.println("UnferFlow");
         }
         System.out.println();
         edit();
